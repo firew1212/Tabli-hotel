@@ -25,6 +25,13 @@ export class HousekeepingController {
       HousekeepingService,
   ) {}
 
+  @Patch(':id/start')
+start(
+  @Param('id') id: string,
+) {
+  return this.housekeepingService.start(id);
+}
+
   @Post()
   create(
     @Body() dto: CreateTaskDto,

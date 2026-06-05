@@ -15,6 +15,37 @@ export class HousekeepingService {
     private readonly prisma: PrismaService,
   ) {}
 
+  async start(id: string) {
+  const task =
+    await this.prisma.housekeeping_tasks.findUnique({
+      where: { id },
+    });
+
+  if (!task) {
+    throw new BadRequestException(
+      'Task not found',
+    );
+  }
+
+  await this.prisma.rooms.update({
+    where: {
+      id: task.room_id!,
+    },
+
+    data: {
+      status: 'CLEANING',
+    },
+  });
+
+  return this.prisma.housekeeping_tasks.update({
+    where: { id },
+
+    data: {
+      status: 'IN_PROGRESS',
+    },
+  });
+}
+
   async create(
     dto: CreateTaskDto,
   ) {

@@ -122,9 +122,17 @@ if (invoice.status !== 'PAID') {
       },
 
       data: {
-        status: 'AVAILABLE',
+        status: 'DIRTY',
       },
     });
+
+    await this.prisma.housekeeping_tasks.create({
+  data: {
+    room_id: reservation.room_id,
+    status: 'PENDING',
+    notes: 'Auto generated after checkout',
+  },
+});
 
     return this.prisma.reservations.update({
       where: {
