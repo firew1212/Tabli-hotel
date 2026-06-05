@@ -14,6 +14,7 @@ import { HousekeepingModule } from './modules/housekeeping/housekeeping.module';
 import { OrdersModule } from './modules/orders/orders.module';
 import { LedgerModule } from './modules/ledger/ledger.module';
 import { OperationsModule } from './modules/operations/operations.module';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
 
 @Module({
   imports: [
@@ -33,7 +34,8 @@ import { OperationsModule } from './modules/operations/operations.module';
     HousekeepingModule,
     OrdersModule,
     LedgerModule,
-    OperationsModule
+    OperationsModule,
+    DashboardModule
   ],
 
   
