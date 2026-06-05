@@ -197,5 +197,7 @@ enum reservation_status {
 enum room_status {
   AVAILABLE
   OCCUPIED
+  DIRTY
+  CLEANING
   MAINTENANCE
 }
