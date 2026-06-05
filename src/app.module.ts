@@ -9,6 +9,7 @@ import { GuestsModule } from './modules/guests/guests.module';
 import { ReservationsModule } from './modules/reservations/reservations.module';
 import { InvoicesModule } from './modules/invoices/invoices.module';
 import { PaymentsModule } from './modules/payments/payments.module';
+import { CheckinModule } from './modules/checkin/checkin.module';
 
 @Module({
   imports: [
@@ -23,7 +24,8 @@ import { PaymentsModule } from './modules/payments/payments.module';
     GuestsModule,
     ReservationsModule,
     InvoicesModule,
-    PaymentsModule
+    PaymentsModule,
+    CheckinModule
   ],
 
   
