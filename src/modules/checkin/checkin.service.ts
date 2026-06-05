@@ -20,11 +20,36 @@ export class CheckinService {
     reservationId: string,
   ) {
     const reservation =
-      await this.prisma.reservations.findUnique({
-        where: {
-          id: reservationId,
-        },
-      });
+  await this.prisma.reservations.findUnique({
+    where: {
+      id: reservationId,
+    },
+  });
+
+if (!reservation) {
+  throw new BadRequestException(
+    'Reservation not found',
+  );
+}
+
+const invoice =
+  await this.prisma.invoices.findFirst({
+    where: {
+      reservation_id: reservation.id,
+    },
+  });
+
+if (!invoice) {
+  throw new BadRequestException(
+    'Invoice not found',
+  );
+}
+
+if (invoice.status !== 'PAID') {
+  throw new BadRequestException(
+    'Invoice must be paid before check in',
+  );
+}
 
     if (!reservation) {
       throw new BadRequestException(
