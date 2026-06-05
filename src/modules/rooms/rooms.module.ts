@@ -1,0 +1,15 @@
+import { Module } from '@nestjs/common';
+
+import { PrismaModule } from '../../database/prisma/prisma.module';
+
+import { RoomsController } from './rooms.controller';
+import { RoomsService } from './rooms.service';
+
+@Module({
+  imports: [PrismaModule],
+
+  controllers: [RoomsController],
+
+  providers: [RoomsService],
+})
+export class RoomsModule {}
