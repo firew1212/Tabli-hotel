@@ -7,6 +7,7 @@ import { UsersModule } from './modules/users/users.module';
 import { RoomsModule } from './modules/rooms/rooms.module';
 import { GuestsModule } from './modules/guests/guests.module';
 import { ReservationsModule } from './modules/reservations/reservations.module';
+import { InvoicesModule } from './modules/invoices/invoices.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { ReservationsModule } from './modules/reservations/reservations.module';
     RoomsModule,
     GuestsModule,
     ReservationsModule,
+    InvoicesModule
   ],
 
   
