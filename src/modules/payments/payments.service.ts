@@ -8,12 +8,15 @@ import { PrismaService }
 
 import { CreatePaymentDto }
   from './dto/create-payment.dto';
+  import { LedgerService }
+from '../ledger/ledger.service';
 
 @Injectable()
 export class PaymentsService {
   constructor(
-    private readonly prisma: PrismaService,
-  ) {}
+  private readonly prisma: PrismaService,
+  private readonly ledgerService: LedgerService,
+) {}
 
   async create(
     dto: CreatePaymentDto,
@@ -57,6 +60,14 @@ export class PaymentsService {
 
     if (totalPaid >= invoiceTotal) {
       status = 'PAID';
+        await this.ledgerService.createEntry(
+    'INVOICE',
+    invoice.id,
+    'CREDIT',
+    invoiceTotal,
+    'Invoice fully paid',
+  );
+
     } else if (totalPaid > 0) {
       status = 'PARTIAL';
     }

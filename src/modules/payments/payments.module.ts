@@ -8,9 +8,13 @@ import { PaymentsController }
 
 import { PaymentsService }
   from './payments.service';
+import { LedgerModule }
+from '../ledger/ledger.module';
 
 @Module({
-  imports: [PrismaModule],
+  imports: [PrismaModule,
+           LedgerModule
+  ],
 
   controllers: [
     PaymentsController,
