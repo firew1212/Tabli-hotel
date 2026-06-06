@@ -11,6 +11,7 @@ import { InvoicesModule } from './modules/invoices/invoices.module';
 import { PaymentsModule } from './modules/payments/payments.module';
 import { CheckinModule } from './modules/checkin/checkin.module';
 import { HousekeepingModule } from './modules/housekeeping/housekeeping.module';
+import { OrdersModule } from './modules/orders/orders.module';
 
 @Module({
   imports: [
@@ -27,7 +28,8 @@ import { HousekeepingModule } from './modules/housekeeping/housekeeping.module';
     InvoicesModule,
     PaymentsModule,
     CheckinModule,
-    HousekeepingModule
+    HousekeepingModule,
+    OrdersModule
   ],
 
   
