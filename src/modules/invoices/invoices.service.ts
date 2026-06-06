@@ -61,6 +61,8 @@ export class InvoicesService {
     });
   }
 
+  
+
   findAll() {
     return this.prisma.invoices.findMany({
       include: {
